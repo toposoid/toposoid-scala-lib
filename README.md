@@ -5,6 +5,12 @@ Toposoid is a knowledge base construction platform.(see [Toposoid　Root Project
 ## Requirements
 * Docker version 20.10.x, or later
 
+## Usage
+```
+#Set as base image in Dockerfile
+#${VERSION} Set the version of the Docker image appropriately
+FROM toposoid/toposoid-scala-lib:${VERSION}
+```
 
 ## License
 toposoid/toposoid-scala-lib is Open Source software released under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.html).
