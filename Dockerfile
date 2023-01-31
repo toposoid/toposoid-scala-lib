@@ -48,4 +48,12 @@ RUN apt-get update \
 && git fetch origin ${TARGET_BRANCH} \
 && git checkout ${TARGET_BRANCH} \
 && sbt publishLocal \
-&& rm -Rf ./target 
+&& rm -Rf ./target \
+&& cd .. \
+&& git clone https://github.com/toposoid/toposoid-feature-vectorizer.git \
+&& cd toposoid-feature-vectorizer \
+&& git fetch origin ${TARGET_BRANCH} \
+&& git checkout ${TARGET_BRANCH} \
+&& sbt publishLocal \
+&& rm -Rf ./target
+
