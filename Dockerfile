@@ -1,4 +1,4 @@
-FROM toposoid/scala-nlp:2.12.12-0.1.0
+FROM toposoid/scala-nlp:2.13.11-0.1.0
 
 ARG TARGET_BRANCH
 WORKDIR /app

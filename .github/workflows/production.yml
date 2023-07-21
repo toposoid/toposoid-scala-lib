@@ -1,14 +1,16 @@
 name: Build
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
-      - feature
+      - main
   workflow_dispatch:
 env:
   PJ_ACTOR: toposoid
   PJ_REPO: toposoid-scala-lib
-  PJ_BRANCH: feature
-  PJ_VERSION: 0.5-SNAPSHOT
+  PJ_BRANCH: main
+  PJ_VERSION: 0.4
 jobs:
   build-toposoid-scala-lib:
     runs-on: ubuntu-20.04
