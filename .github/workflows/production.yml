@@ -9,7 +9,7 @@ on:
 env:
   PJ_ACTOR: toposoid
   PJ_REPO: toposoid-scala-lib
-  PJ_BRANCH: feature
+  PJ_BRANCH: main
   PJ_VERSION: 0.4
 jobs:
   build-toposoid-scala-lib:
