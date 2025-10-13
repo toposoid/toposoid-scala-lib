@@ -32,5 +32,7 @@ RUN apt-get update \
 && cd toposoid-common \
 && git fetch origin ${TARGET_BRANCH} \
 && git checkout ${TARGET_BRANCH} \
+&& export TOPOSOID_AKKA_TOKEN=${AKKA_TOKEN} \
 && sbt publishLocal \
+&& export TOPOSOID_AKKA_TOKEN="" \
 && rm -Rf ./target
