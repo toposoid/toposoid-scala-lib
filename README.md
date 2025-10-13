@@ -4,8 +4,10 @@ Toposoid is a knowledge base construction platform.(see [Toposoid　Root Project
 
 ## Requirements
 * Docker version 20.10.x, or later
-* Scala version 2.13
-
+* Scala version 3.3.6
+* The Akka dependencies are available from Akka’s secure library repository. 
+* To access them you need to use a secure, tokenized URL as specified at https://account.akka.io/token.
+* The Akka repository token is required when building Dockerfile-base. ex --build-arg AKKA_TOKEN=${YOUR_AKKA_TOKEN}
 ## Usage
 ```
 #Set as base image in Dockerfile
