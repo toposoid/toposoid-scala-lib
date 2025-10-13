@@ -1,6 +1,7 @@
 FROM toposoid/scala-base:2.13.11
 
 ARG TARGET_BRANCH
+ARG AKKA_TOKEN
 WORKDIR /app
 
 ENV DEPLOYMENT=local
