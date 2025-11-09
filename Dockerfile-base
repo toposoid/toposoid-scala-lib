@@ -1,4 +1,4 @@
-FROM toposoid/scala-base:2.13.11
+FROM toposoid/scala-base:3.3.6
 
 ARG TARGET_BRANCH
 ARG AKKA_TOKEN
@@ -36,4 +36,8 @@ RUN apt-get update \
 && export TOPOSOID_AKKA_TOKEN=${AKKA_TOKEN} \
 && sbt publishLocal \
 && export TOPOSOID_AKKA_TOKEN="" \
-&& rm -Rf ./target
+&& rm -Rf ./target \
+&& mkdir -p /root/.m2/repository \
+&& cp -rf ~/.cache/coursier/v1/https/repo.akka.io/${AKKA_TOKEN}/secure/* mkdir -p /root/.m2/repository/
+
+
