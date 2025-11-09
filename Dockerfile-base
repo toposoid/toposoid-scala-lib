@@ -38,6 +38,6 @@ RUN apt-get update \
 && export TOPOSOID_AKKA_TOKEN="" \
 && rm -Rf ./target \
 && mkdir -p /root/.m2/repository \
-&& cp -rf ~/.cache/coursier/v1/https/repo.akka.io/${AKKA_TOKEN}/secure/* mkdir -p /root/.m2/repository/
+&& cp -rf ~/.cache/coursier/v1/https/repo.akka.io/${AKKA_TOKEN}/secure/* /root/.m2/repository/
 
 
