@@ -1,7 +1,7 @@
 FROM toposoid/scala-base:3.3.6
 
 ARG TARGET_BRANCH
-ARG AKKA_TOKEN
+#ARG AKKA_TOKEN
 WORKDIR /app
 
 ENV DEPLOYMENT=local
@@ -33,11 +33,11 @@ RUN apt-get update \
 && cd toposoid-common \
 && git fetch origin ${TARGET_BRANCH} \
 && git checkout ${TARGET_BRANCH} \
-&& export TOPOSOID_AKKA_TOKEN=${AKKA_TOKEN} \
+#&& export TOPOSOID_AKKA_TOKEN=${AKKA_TOKEN} \
 && sbt publishLocal \
-&& export TOPOSOID_AKKA_TOKEN="" \
-&& rm -Rf ./target \
-&& mkdir -p /root/.m2/repository \
-&& cp -rf ~/.cache/coursier/v1/https/repo.akka.io/${AKKA_TOKEN}/secure/* /root/.m2/repository/
+#&& export TOPOSOID_AKKA_TOKEN="" \
+&& rm -Rf ./target
+#&& mkdir -p /root/.m2/repository \
+#&& cp -rf ~/.cache/coursier/v1/https/repo.akka.io/${AKKA_TOKEN}/secure/* /root/.m2/repository/
 
 
