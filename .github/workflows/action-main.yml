@@ -17,9 +17,9 @@ jobs:
     needs: build-toposoid-scala-lib-base-amd64 
     uses: ./.github/workflows/action-base-build-push-arm64.yml
     secrets: inherit  
-  merge-and-push-base-manifest:
-    needs: build-toposoid-scala-lib-base-amd64 
+  merge-and-push-base-manifest:    
     runs-on: ubuntu-24.04
+    needs: build-toposoid-scala-lib-base-arm64
     steps:
       - name: Login to CR
         uses: docker/login-action@v2
