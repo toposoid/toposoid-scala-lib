@@ -1,16 +1,13 @@
 name: Build
 on:
-  push:
-    branches:
-      - feature
-  workflow_dispatch:
+  workflow_call:
 env:
   PJ_ACTOR: toposoid
   PJ_REPO: toposoid-scala-lib
   PJ_BRANCH: feature
   PJ_VERSION: 0.7-SNAPSHOT
 jobs:
-  build-toposoid-scala-lib-base:
+  build-toposoid-scala-lib-base-amd64:
     runs-on: ubuntu-24.04
     steps:
       - name: Clone ${{ env.PJ_REPO }}
@@ -28,7 +25,7 @@ jobs:
         with:
           username: toposoid
           password: ${{ secrets.CR_TOKEN }}
-      - name: Build And Push Docker Image
+      - name: Build And Push Docker Base Image
         uses: docker/build-push-action@v3
         with:
           context: .
@@ -37,7 +34,3 @@ jobs:
           tags: toposoid/${{ env.PJ_REPO }}-base:${{ env.PJ_VERSION }}
           build-args: |
             TARGET_BRANCH=${{ env.PJ_BRANCH }}
-  build-toposoid-scala-lib:
-    needs: build-toposoid-scala-lib-base
-    uses: ./.github/workflows/action-build-push-amd64.yml
-    secrets: inherit
