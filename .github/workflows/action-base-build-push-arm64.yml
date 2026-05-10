@@ -7,8 +7,8 @@ env:
   PJ_BRANCH: feature
   PJ_VERSION: 0.7-SNAPSHOT
 jobs:
-  build-toposoid-scala-lib-amd64:
-    runs-on: ubuntu-24.04
+  build-toposoid-scala-lib-base-arm64:
+    runs-on: ubuntu-24.04-arm
     steps:
       - name: Clone ${{ env.PJ_REPO }}
         uses: actions/checkout@v3
@@ -25,12 +25,13 @@ jobs:
         with:
           username: toposoid
           password: ${{ secrets.CR_TOKEN }}
-      - name: Build And Push Docker Image
+      - name: Build And Push Docker Base Image
         uses: docker/build-push-action@v3
         with:
           context: .
+          file: Dockerfile-base
           provenance: false
           push: true
-          tags: toposoid/${{ env.PJ_REPO }}:${{ env.PJ_VERSION }}
+          tags: toposoid/${{ env.PJ_REPO }}-base:${{ env.PJ_VERSION }}
           build-args: |
             TARGET_BRANCH=${{ env.PJ_BRANCH }}
