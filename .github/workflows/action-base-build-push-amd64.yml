@@ -40,3 +40,4 @@ jobs:
   build-toposoid-scala-lib:
     needs: build-toposoid-scala-lib-base
     uses: ./.github/workflows/action-build-push-amd64.yml
+    secrets: inherit
