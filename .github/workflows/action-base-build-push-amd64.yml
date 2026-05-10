@@ -10,7 +10,7 @@ env:
   PJ_BRANCH: feature
   PJ_VERSION: 0.7-SNAPSHOT
 jobs:
-  build-toposoid-scala-lib:
+  build-toposoid-scala-lib-base:
     runs-on: ubuntu-24.04
     steps:
       - name: Clone ${{ env.PJ_REPO }}
@@ -37,12 +37,6 @@ jobs:
           tags: toposoid/${{ env.PJ_REPO }}-base:${{ env.PJ_VERSION }}
           build-args: |
             TARGET_BRANCH=${{ env.PJ_BRANCH }}
-            AKKA_TOKEN=${{secrets.AKKA_TOKEN}}
-      - name: Build And Push Docker Image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: true
-          tags: toposoid/${{ env.PJ_REPO }}:${{ env.PJ_VERSION }}
-          build-args: |
-            TARGET_BRANCH=${{ env.PJ_BRANCH }}
+  build-toposoid-scala-lib-base:
+    needs: build-toposoid-scala-lib-base
+    uses: ./.github/workflows/action-build-push-amd64.yml
